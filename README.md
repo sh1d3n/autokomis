@@ -1,0 +1,2 @@
+# autokomis
+Projekt zaliczeniowy
