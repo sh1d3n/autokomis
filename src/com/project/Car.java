@@ -4,7 +4,7 @@ public class Car {
 
     private final String producer;
     private final String model;
-    private String plates;
+    private Integer plates;
     private Integer yearOfProduction;
     private Integer value;
 
@@ -13,11 +13,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getPlates() {
+    public Integer getPlates() {
         return plates;
     }
 
-    public void setPlates(String plates) {
+    public void setPlates(Integer plates) {
         this.plates = plates;
     }
 
@@ -44,5 +44,15 @@ public class Car {
     public void setValue(Integer value) {
         this.value = value;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "producer='" + producer + '\'' +
+                ", model='" + model + '\'' +
+                ", plates=" + plates +
+                ", yearOfProduction=" + yearOfProduction +
+                ", value=" + value +
+                '}';
+    }
+}

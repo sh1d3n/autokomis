@@ -3,9 +3,9 @@ package com.project;
 public class Main {
 
     public static void main(String[] args) {
-        Human human = new Human("Michał", "Jakusz");
+        CarDealer carDealer = new CarDealer();
+        carDealer.importCarsFromAbroad(10, 1000);
 
-        Car car = new Car("fiat","audi");
-        human.setCar(car);
+        System.out.println(carDealer.getCars());
     }
 }
