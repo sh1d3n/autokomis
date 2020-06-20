@@ -3,16 +3,16 @@ package com.project;
 import java.time.LocalDateTime;
 
 public class Transaction {
-    private Car car;
+    private CarDetails carDetails;
     private String price;
     private LocalDateTime transactionDate;
 
-    public Car getCar() {
-        return car;
+    public CarDetails getCarDetails() {
+        return carDetails;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarDetails(CarDetails carDetails) {
+        this.carDetails = carDetails;
     }
 
     public String getPrice() {

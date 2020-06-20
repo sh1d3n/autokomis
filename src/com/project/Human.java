@@ -2,7 +2,7 @@ package com.project;
 
 public class Human {
 
-    private Car car;
+    private CarDetails carDetails;
 
     private String firstName;
     private String lastName;
@@ -14,12 +14,12 @@ public class Human {
         this.lastName = lastName;
     }
 
-    public Car getCar() {
-        return car;
+    public CarDetails getCarDetails() {
+        return carDetails;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarDetails(CarDetails carDetails) {
+        this.carDetails = carDetails;
     }
 
     public String getFirstName() {
