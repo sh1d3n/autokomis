@@ -1,14 +1,13 @@
 package com.project;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TownHall {
-    private static final List<Car> registeredCars = new ArrayList<>();
-    private static int lastRegisteredPlate = 0;
+    private final List<Car> registeredCars = new ArrayList<>();
+    private int lastRegisteredPlate = 0;
 
-    public static Integer registerNewCar(String owner) {
+    public Integer registerNewCar(String owner) {
         Integer platesForNewCar = ++lastRegisteredPlate;
 
         registeredCars.add(new Car(platesForNewCar, owner));
@@ -16,11 +15,15 @@ public class TownHall {
         return platesForNewCar;
     }
 
-    public static void unregisterCar(Car car) {
-        registeredCars.remove(car);
+    public void unregisterCar(Integer plates) {
+        for (Car car : registeredCars) {
+            if (car.getPlates().equals(plates)) {
+                registeredCars.remove(car);
+            }
+        }
     }
 
-    public static void listAllRegisteredCars() {
+    public void listAllRegisteredCars() {
         System.out.println("Currently registered cars: ");
         for (Car car : registeredCars) {
             System.out.println(car);

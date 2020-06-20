@@ -2,44 +2,45 @@ package com.project;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class CarDealer {
-    private final List<CarDetails> carDetails = new ArrayList<>();
-    private List<Transaction> transactionsHistory = new ArrayList<>();
+public class CarDealer implements Dealerable {
+    private final List<CarDetails> ownedCars = new ArrayList<>();
+    private final List<Transaction> transactionsHistory = new ArrayList<>();
+
+    private final TownHall townHall;
+
     private int money = 100000;
 
     private static final int CAR_COMMISSION_PERCENTAGE = 125;
 
-    public List<CarDetails> getCarDetails() {
-        return carDetails;
+    public CarDealer(TownHall townHall) {
+        this.townHall = townHall;
     }
 
+    @Override
     public void importCarsFromAbroad(int amountOfCarsToBuy, int priceOfCarsToBuy) {
         this.money =  money - amountOfCarsToBuy * priceOfCarsToBuy;
-
-        Random r = new Random();
 
         while (amountOfCarsToBuy > 0) {
             CarDetails importedCar = new CarDetails("Fiat", "126");
 
-            int importedCarValue = r.ints(1, priceOfCarsToBuy, priceOfCarsToBuy * CAR_COMMISSION_PERCENTAGE / 100).findFirst().getAsInt();
+            int importedCarValue = RandomNumbers.getRandomInt(priceOfCarsToBuy, priceOfCarsToBuy * CAR_COMMISSION_PERCENTAGE / 100);
 
             importedCar.setValue(importedCarValue);
 
             String carOwner = "Car Dealer";
 
             importedCar.setOwner(carOwner);
-            importedCar.setPlates(TownHall.registerNewCar(carOwner));
+            importedCar.setPlates(townHall.registerNewCar(carOwner));
 
-            carDetails.add(importedCar);
+            ownedCars.add(importedCar);
 
             int randomYear;
 
             if (priceOfCarsToBuy < 5000) {
-                randomYear = r.ints(1, 1990, 2000).findFirst().getAsInt();
+                randomYear = RandomNumbers.getRandomInt(1990, 2000);
             } else {
-                randomYear = r.ints(1, 2000, 2020).findFirst().getAsInt();
+                randomYear = RandomNumbers.getRandomInt(2000, 2020);
             }
 
             importedCar.setYearOfProduction(randomYear);
@@ -48,10 +49,12 @@ public class CarDealer {
         }
     }
 
+    @Override
     public void buyCar(CarDetails carDetails) {
 
     }
 
+    @Override
     public void sellCar(CarDetails carDetails) {
 
     }

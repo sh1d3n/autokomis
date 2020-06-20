@@ -7,7 +7,7 @@ public class Human {
     private String firstName;
     private String lastName;
 
-    private Double salary = 1000.0;
+    private Double money = 1000.0;
 
     public Human(String firstName, String lastName) {
         this.firstName = firstName;
@@ -38,11 +38,11 @@ public class Human {
         this.lastName = lastName;
     }
 
-    public Double getSalary() {
-        return salary;
+    public Double getMoney() {
+        return money;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setMoney(Double money) {
+        this.money = money;
     }
 }

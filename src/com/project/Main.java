@@ -3,9 +3,11 @@ package com.project;
 public class Main {
 
     public static void main(String[] args) {
-        CarDealer carDealer = new CarDealer();
+        TownHall townHall = new TownHall();
+
+        CarDealer carDealer = new CarDealer(townHall);
         carDealer.importCarsFromAbroad(10, 1000);
 
-        TownHall.listAllRegisteredCars();
+        townHall.listAllRegisteredCars();
     }
 }
