@@ -9,5 +9,7 @@ public class Main {
         carDealer.importCarsFromAbroad(10, 1000);
 
         townHall.listAllRegisteredCars();
+
+        Human human = new Human("Andrzeju", "Jak Ci na imie");
     }
 }
