@@ -1,5 +1,6 @@
 package com.project;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,12 +51,59 @@ public class CarDealer implements Dealerable {
     }
 
     @Override
-    public void buyCar(CarDetails carDetails) {
+    public void buyCarFromSeller(Human seller) {
+        if (seller.getCarDetails() != null) {
+            CarDetails car = seller.getCarDetails();
+            Integer carValue = car.getValue();
+            Integer carBuyPrice = carValue - carValue * CAR_COMMISSION_PERCENTAGE / 100;
 
+            if (money > carBuyPrice) {
+                money -= carBuyPrice;
+                seller.setMoney(seller.getMoney() + carBuyPrice);
+
+                seller.setCarDetails(null);
+                ownedCars.add(car);
+
+                Transaction transaction = new Transaction();
+                transaction.setCarDetails(car);
+                transaction.setPrice(carBuyPrice);
+                transaction.setTransactionDate(LocalDateTime.now());
+                transaction.setDetails("Car dealer bought car from individual seller");
+
+                transactionsHistory.add(transaction);
+            }
+        } else {
+            System.out.println("You don't have a car to sell!");
+        }
     }
 
     @Override
-    public void sellCar(CarDetails carDetails) {
+    public void sellCarToBuyer(CarDetails car, Human buyer) {
+        if (ownedCars.contains(car)) {
+            if (buyer.getMoney() > car.getValue()) {
+                money += car.getValue();
+                buyer.setMoney(buyer.getMoney() - car.getValue());
 
+                ownedCars.remove(car);
+                buyer.setCarDetails(car);
+
+                Transaction transaction = new Transaction();
+                transaction.setCarDetails(car);
+                transaction.setPrice(car.getValue());
+                transaction.setTransactionDate(LocalDateTime.now());
+                transaction.setDetails("Car dealer sold car to individual seller");
+
+                transactionsHistory.add(transaction);
+            }
+        } else {
+            System.out.println("That's not our car!");
+        }
+    }
+
+    public void listDealerTransactions() {
+        System.out.println("Car dealer transactions: ");
+        for (Transaction transaction : transactionsHistory) {
+            System.out.println(transaction);
+        }
     }
 }

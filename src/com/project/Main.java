@@ -10,6 +10,6 @@ public class Main {
 
         townHall.listAllRegisteredCars();
 
-        Human human = new Human("Andrzeju", "Jak Ci na imie");
+        Human human = new Human("Andrzeju", "Jak Ci na imie", 2000);
     }
 }

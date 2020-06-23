@@ -7,11 +7,12 @@ public class Human {
     private String firstName;
     private String lastName;
 
-    private Double money = 1000.0;
+    private Integer money = 1000;
 
-    public Human(String firstName, String lastName) {
+    public Human(String firstName, String lastName, Integer money) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.money = money;
     }
 
     public CarDetails getCarDetails() {
@@ -38,11 +39,11 @@ public class Human {
         this.lastName = lastName;
     }
 
-    public Double getMoney() {
+    public Integer getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(Integer money) {
         this.money = money;
     }
 }

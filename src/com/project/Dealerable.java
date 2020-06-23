@@ -2,6 +2,6 @@ package com.project;
 
 public interface Dealerable {
     void importCarsFromAbroad(int amountOfCarsToBuy, int priceOfCarsToBuy);
-    void buyCar(CarDetails carDetails);
-    void sellCar(CarDetails carDetails);
+    void buyCarFromSeller(Human seller);
+    void sellCarToBuyer(CarDetails carDetails, Human buyer);
 }

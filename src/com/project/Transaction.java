@@ -4,8 +4,9 @@ import java.time.LocalDateTime;
 
 public class Transaction {
     private CarDetails carDetails;
-    private String price;
+    private Integer price;
     private LocalDateTime transactionDate;
+    private String details;
 
     public CarDetails getCarDetails() {
         return carDetails;
@@ -15,12 +16,20 @@ public class Transaction {
         this.carDetails = carDetails;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public LocalDateTime getTransactionDate() {
@@ -29,5 +38,14 @@ public class Transaction {
 
     public void setTransactionDate(LocalDateTime transactionDate) {
         this.transactionDate = transactionDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "carDetails=" + carDetails +
+                ", price=" + price +
+                ", transactionDate=" + transactionDate +
+                '}';
     }
 }
