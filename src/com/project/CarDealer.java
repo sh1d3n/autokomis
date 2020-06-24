@@ -64,6 +64,10 @@ public class CarDealer implements Dealerable {
                 seller.setCarDetails(null);
                 ownedCars.add(car);
 
+                String carOwner = "Car Dealer";
+
+                townHall.changeOwnerOfCar(car.getPlates(), carOwner);
+
                 Transaction transaction = new Transaction();
                 transaction.setCarDetails(car);
                 transaction.setPrice(carBuyPrice);
@@ -71,6 +75,8 @@ public class CarDealer implements Dealerable {
                 transaction.setDetails("Car dealer bought car from individual seller");
 
                 transactionsHistory.add(transaction);
+
+                System.out.println(transaction);
             }
         } else {
             System.out.println("You don't have a car to sell!");
@@ -87,6 +93,8 @@ public class CarDealer implements Dealerable {
                 ownedCars.remove(car);
                 buyer.setCarDetails(car);
 
+                townHall.changeOwnerOfCar(car.getPlates(), buyer.getFirstName() + " " + buyer.getLastName());
+
                 Transaction transaction = new Transaction();
                 transaction.setCarDetails(car);
                 transaction.setPrice(car.getValue());
@@ -94,12 +102,58 @@ public class CarDealer implements Dealerable {
                 transaction.setDetails("Car dealer sold car to individual seller");
 
                 transactionsHistory.add(transaction);
+
+                System.out.println(transaction);
             }
         } else {
             System.out.println("That's not our car!");
         }
     }
 
+    @Override
+    public CarDetails showMostExpensiveCar() {
+        if (ownedCars.isEmpty()) {
+            throw new RuntimeException("Dealers has no cars");
+        }
+
+        CarDetails carDetails = null;
+
+        for (CarDetails car : ownedCars) {
+            if (carDetails == null || carDetails.getValue() < car.getValue()) {
+                carDetails = car;
+            }
+        }
+        return carDetails;
+    }
+
+    @Override
+    public CarDetails showCheapestCar() {
+        if (ownedCars.isEmpty()) {
+            throw new RuntimeException("Dealers has no cars");
+        }
+
+        CarDetails carDetails = null;
+
+        for (CarDetails car : ownedCars) {
+            if (carDetails == null || carDetails.getValue() > car.getValue()) {
+                carDetails = car;
+            }
+        }
+        return carDetails;
+    }
+
+    @Override
+    public CarDetails showRandomCar() {
+        if (ownedCars.isEmpty()) {
+            throw new RuntimeException("Dealers has no cars");
+        }
+
+        int randomInt = RandomNumbers.getRandomInt(0, ownedCars.size() - 1);
+
+        return ownedCars.get(randomInt);
+    }
+
+    @Override
     public void listDealerTransactions() {
         System.out.println("Car dealer transactions: ");
         for (Transaction transaction : transactionsHistory) {

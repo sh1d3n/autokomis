@@ -29,4 +29,12 @@ public class TownHall {
             System.out.println(car);
         }
     }
+
+    public void changeOwnerOfCar(int plates, String newOwner) {
+        for (Car car : registeredCars) {
+            if (car.getPlates().equals(plates)) {
+                car.setOwner(newOwner);
+            }
+        }
+    }
 }

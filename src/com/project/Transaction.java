@@ -46,6 +46,7 @@ public class Transaction {
                 "carDetails=" + carDetails +
                 ", price=" + price +
                 ", transactionDate=" + transactionDate +
+                ", details='" + details + '\'' +
                 '}';
     }
 }

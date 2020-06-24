@@ -10,6 +10,27 @@ public class Main {
 
         townHall.listAllRegisteredCars();
 
-        Human human = new Human("Andrzeju", "Jak Ci na imie", 1000);
+        Human andrzej = new Human("Andrzeju", "Jak Ci na imie", 20000);
+
+        CarDetails mostExpensiveCar = carDealer.showMostExpensiveCar();
+
+        carDealer.sellCarToBuyer(mostExpensiveCar, andrzej);
+
+        Human jacek = new Human("Jacek", "Jacek", 20000);
+
+        CarDetails cheapestCar = carDealer.showCheapestCar();
+
+        carDealer.sellCarToBuyer(cheapestCar, jacek);
+
+        carDealer.buyCarFromSeller(andrzej);
+
+        Human wiesiu = new Human("Wieslaw", "Wieslaw", 2000);
+
+        CarDetails randomCar = carDealer.showRandomCar();
+
+        carDealer.sellCarToBuyer(randomCar, wiesiu);
+
+        townHall.listAllRegisteredCars();
+        carDealer.listDealerTransactions();
     }
 }
