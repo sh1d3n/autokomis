@@ -15,20 +15,24 @@ public class Main {
         CarDetails mostExpensiveCar = carDealer.showMostExpensiveCar();
 
         carDealer.sellCarToBuyer(mostExpensiveCar, andrzej);
+        System.out.println("Andrzej spent a fortune for a car");
 
         Human jacek = new Human("Jacek", "Jacek", 20000);
 
         CarDetails cheapestCar = carDealer.showCheapestCar();
 
         carDealer.sellCarToBuyer(cheapestCar, jacek);
+        System.out.println("Jacek has just bought a car");
 
         carDealer.buyCarFromSeller(andrzej);
+        System.out.println("Andrzej sold his car");
 
-        Human wiesiu = new Human("Wieslaw", "Wieslaw", 2000);
+        Human wiesiu = new Human("Wieslaw", "Wieslaw", 2000000);
 
         CarDetails randomCar = carDealer.showRandomCar();
 
         carDealer.sellCarToBuyer(randomCar, wiesiu);
+        System.out.println("Millionaire bought another car!");
 
         townHall.listAllRegisteredCars();
         carDealer.listDealerTransactions();
