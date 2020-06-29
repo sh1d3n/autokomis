@@ -21,7 +21,7 @@ public class Main {
 
         CarDetails cheapestCar = carDealer.showCheapestCar();
 
-        carDealer.sellCarToBuyer(cheapestCar, jacek);
+        carDealer.sellCarToBuyer(mostExpensiveCar, jacek);
         System.out.println("Jacek has just bought a car");
 
         carDealer.buyCarFromSeller(andrzej);
@@ -33,6 +33,12 @@ public class Main {
 
         carDealer.sellCarToBuyer(randomCar, wiesiu);
         System.out.println("Millionaire bought another car!");
+
+        carDealer.buyCarFromSeller(wiesiu);
+        System.out.println("Wiesiu has just sold his luxury car");
+
+        carDealer.sellCarToBuyer(cheapestCar, andrzej);
+        System.out.println("Andrzej bought another car!");
 
         townHall.listAllRegisteredCars();
         carDealer.listDealerTransactions();
