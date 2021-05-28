@@ -14,6 +14,7 @@ Użytkownik ma określoną liczbę gotówki, program losuje samochody różnych 
 ## Technologie
 * Java Script
 * HTML
+* MySQL
 
 ## Status projektu
 Projekt został zakończony, natomiast planowane są dodatkowe funkcjonalności takie jak
